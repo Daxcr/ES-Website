@@ -3,6 +3,10 @@
     <link rel="icon" href="/icon.png" type="image/png">
 </head>
 <style>
+    :root {
+        --docColour: #000000;
+        --docBgColour: #ffffff;
+    }
     @keyframes FadeIn {
         0% {
             opacity: 0;
@@ -31,12 +35,18 @@
         height: 100vh;
         margin: 0;
         font-size: 4vw;
-        font-family: "Renogare";
+        font-family: "Lexend";
         overflow-y: hidden;
+        background-color: var(--docBgColour);
+        color: var(--docColour);
     }
     @font-face {
         font-family: "Renogare";
-        src: url("/Renogare-Regular.otf") format("opentype");
+        src: url("/Resources/Renogare-Regular.otf") format("opentype");
+    }
+    @font-face {
+        font-family: "Lexend";
+        src: url("/Resources/Lexend-Regular.ttf") format("truetype");
     }
     .url {
         --colour: #f34372;
@@ -48,6 +58,7 @@
     }
     .url:hover {
         --width: 16vw !important;
+        filter: brightness(1.1);
     }
     .url::before {
         content: "";
@@ -63,12 +74,48 @@
         pointer-events: none;
         transition: width 0.8s cubic-bezier(0.19, 1, 0.22, 1);
     }
+    .iconcontainer {
+        transition: transform 0.3s ease;
+        user-select: none;
+    }
+    .iconcontainer:hover {
+        transform: scale(1.1);
+    }
+    .iconcontainer:active {
+        transform: scale(0.9);
+    }
 </style>
-<img src="/icon.png" style="width: 15vw; animation: FadeIn 0.8s ease-out forwards; animation-delay: 0.6s; opacity: 0; z-index: 999;">
-<span style="animation: FadeIn 0.8s ease-out forwards; animation-delay: 0.9s; opacity: 0; z-index: 999;">Elemental Synergy</span><br>
+<span class="iconcontainer"><img src="/icon.png" id="icon" style="width: 15vw; animation: FadeIn 0.8s ease-out forwards; animation-delay: 0.6s; opacity: 0; z-index: 999;"></span>
+<span style="animation: FadeIn 0.8s ease-out forwards; animation-delay: 0.9s; opacity: 0; z-index: 999; font-family: Renogare;">Elemental Synergy</span><br>
 <span style="animation: FadeIn 0.8s ease-out forwards; animation-delay: 1.2s; opacity: 0;">
     <a href="https://dax.cr" class="url" target="_blank">dax.cr</a>
     <a href="https://github.com/Daxcr/ES-Website" class="url" style="--colour: #f5ad21; --bgcolour: #e9db6b;" target="_blank">github.com</a>
     <a href="https://discord.gg/YqjXmkYRb8" class="url" style="--colour: #3e83f2; --bgcolour: #4ac1ff;" target="_blank">discord.gg</a>
     <a href="https://www.youtube.com/@ElementalSynergy" class="url" style="--colour: #00cb9b; --bgcolour: #63e8a9;" target="_blank">youtube.com</a>
 </span>
+<script>
+    const root = document.documentElement;
+
+    const icon = document.getElementById("icon");
+    let darktheme = localStorage.getItem("theme") ?? false;
+
+    function ApplyTheme(){
+        if (darktheme) {
+            root.style.setProperty("--docColour", "#ffffff");
+            root.style.setProperty("--docBgColour", "#000000");
+            icon.src = "/icondark.png";
+        } else {
+            root.style.setProperty("--docColour", "#000000");
+            root.style.setProperty("--docBgColour", "#ffffff");
+            icon.src = "/icon.png";
+        }
+    }
+
+    ApplyTheme();
+
+    icon.addEventListener("click", function() {
+        darktheme = !darktheme;
+        localStorage.setItem("theme", darktheme);
+        ApplyTheme();
+    });
+</script>
