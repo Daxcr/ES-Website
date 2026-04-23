@@ -1,0 +1,47 @@
+<head>
+    <title>Elemental Synergy</title>
+    <link rel="icon" href="/icon.png" type="image/png">
+</head>
+<style>
+    @keyframes FadeIn {
+        0% {
+            opacity: 0;
+            transform: translateY(2vw);
+            filter: blur(6px);
+        }
+        50% {
+            opacity: 0;
+            transform: translateY(2vw);
+            filter: blur(6px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0vw);
+            filter: blur(0px);
+        }
+    }
+    a {
+        color: #676767;
+        text-decoration: none;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-size: 4vw;
+        animation: FadeIn 1.4s ease-out forwards;
+        font-family: "Renogare";
+    }
+    @font-face {
+        font-family: "Renogare";
+        src: url("/Renogare-Regular.otf") format("opentype");
+    }
+</style>
+Hello, World.<br>
+<a href="https://dax.cr" style="font-size: 2vw;">dax.cr</a>
