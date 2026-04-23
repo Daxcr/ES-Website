@@ -1,6 +1,8 @@
 <head>
     <title>Elemental Synergy</title>
     <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="preload" as="image" href="/icon.png">
+    <link rel="preload" as="image" href="/icondark.png">
 </head>
 <style>
     :root {
@@ -71,6 +73,20 @@
         background-color: var(--bgcolour);
         z-index: -1;
         opacity: 0.2;
+        pointer-events: none;
+        transition: width 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+    .url::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%) translateY(-64.9%);
+        width: var(--width);
+        height: 300vh;
+        outline: var(--bgcolour) calc(var(--width) / 120) solid;
+        z-index: -1;
+        opacity: 0.5;
         pointer-events: none;
         transition: width 0.8s cubic-bezier(0.19, 1, 0.22, 1);
     }
