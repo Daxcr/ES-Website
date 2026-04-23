@@ -97,7 +97,7 @@
     const root = document.documentElement;
 
     const icon = document.getElementById("icon");
-    let darktheme = localStorage.getItem("theme") ?? false;
+    let darktheme = localStorage.getItem("theme") === "true";
 
     function ApplyTheme(){
         if (darktheme) {
